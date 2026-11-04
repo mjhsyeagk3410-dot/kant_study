@@ -1,65 +1,50 @@
 # 가위 바위 보 게임 미니 프로젝트 
 
-# 가위바위보 게임의 목표는? 내가 이기는것이다. 
-# 이기려면 무엇을, 어떤 방식으로 해야하는가? 약속된 규칙에서 상대방보다 좋은 수가 나와야한다 (1/3 확률) 
-# (멀티버스 세계가 존재한다면 1/9 확률. 내가 가위와 주먹을 내는 평행세계, 내가 보자기를 내는 현재세계를 더하면 ㅋㅋ)
-# 약속된 규칙
-    # 이 게임의 수: 가위 / 바위 / 보 (3가지)
-        # 가위는 2? two? 야
-        # 바위는 0? zero? one? 이야
-        # 보는 5? five? 야
-    # 결과: 이기다 (이기는 수) / 지다 (지는 수) / 비기다 (비기는 수)
-        # A: 가위, B: 가위  = 비김      / A: 바위, B: 바위 = 비김       / A: 보, B: 보 = 비김
-        # A: 가위, B: 보   = A이김, B짐 / A: 바위, B: 가위 = A이김, B짐 / A: 보, B: 바위 = A이김, B짐
-        # A: 가위, B: 바위 = B이김, A짐 / A: 바위, B:   보 = B이김, A짐 / A: 보, B: 가위 = B이김, A짐
-    # 게임 횟수: 한판 단판 승부 / 삼 세 판. 
-
-
-# bool 일때? 
-    # 컴퓨터가 true / 내가 false
-    # 가위 vs 가위 false
-    # 가위 vs 보자기 false
-    # 바위 vs 보자기 true
-    # 가위 vs 바위 true
-
-# if 조건문? 
-# if computer < Human
-    # elif
-
-# 리스트? 
-# rps = [rock, paper, scissors]
-
-# 튜플? 
-# rps = (rock, paper, scissors)
-# 튜플을 써도 상관없는것은, 가위바위보의 수는 어차피 바뀌지 않는 절대 값이니까. 
-
-# 만약 진짜 무식하게 코드를 짠다고하면은
-
-# 숫자로 정리해본 가위 바위 보 
-# 가위: 손가락 두개니까 2
-# 바위: 손가락 0개니까 0
-# 보: 손가락 다섯개니까 5
-# rps = (0, 2, 5) 이렇게도 가능하지 않을까? 
-
-# 튜터님이 지정해준 미니 프로젝트 만들때 규칙 
+# 튜터님 가이드 
 # 1 컴퓨터가 난수를 발생시켜 가위 / 바위 / 보 데이터 저장
 # 2 플레이어 화면에 가위 / 바위 / 보 번호를 입력
 # 3 승패 판정 결과
 
-print("=" * 30) #게임시작 문구 윗 장식
-print("가위바위보 게임") #게임시작할때
-print("=" * 30) #게임시작 문구 아랫 장식 
+import random # 난수가 발생되는 모듈 임포트 
 
-print("1. 가위 / 2. 바위 / 3. 보")
-print("번호를 선택하세요. : ")
+huma_score = 0
+compu_score = 0
 
-print("[게임 결과]")
-print("나: 보 vs 컴퓨터: 바위")
-print("=> 승리 / 패배 / 비김")
+while True:
+    print("=" * 30) #게임시작 문구 윗 장식
+    print("가위 / 바위 / 보 게임") #게임시작할때
+    print("=" * 30) #게임시작 문구 아랫 장식 
 
-print("현재 스코어 나 1 : 0 컴퓨터")
+    print("1. 가위 / 2. 바위 / 3. 보")
 
-print("다시 도전 (yes/no)")
+    huma = int(input("번호를 선택하세요.: "))
+ 
+    compu = random.randint(1, 3)
+    rps_text = ["", "가위", "바위", "보"]
+    
+    huma_text = rps_text[huma]
+    compu_text = rps_text[compu]
+
+    if huma == compu:
+     print("=> 무승부") 
+    elif (huma == 1 and compu == 3) or (huma == 2 and compu == 1) or (huma == 3 and compu == 2):
+        print("=> 승리")
+        huma_score += 1
+    else:
+        print("=> 패배")
+        compu_score += 1
+
+    print("[게임 결과]")
+    print(f"나: {huma_text} vs 컴퓨터: {compu_text}")1\
+    print(f"현재 스코어 나 {huma_score} : {compu_score} 컴퓨터")
+
+    game_continue = input("다시 도전 (yes/no): ")
+    if game_continue== "no":
+        break
+
+    else:
+        continue 
+    
 
 # 나와야할 화면 모습 
 # ========================================
@@ -79,4 +64,3 @@ print("다시 도전 (yes/no)")
 # 1 플레이어 이름 입력 받아서 승패 기록에 표시
 # 2 3판 2선 승제로 최종 결과 계산
 # 3 각 판별 승패 목록 표시
-# 4 연승 기록 누적해서 표시
