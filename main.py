@@ -35,7 +35,7 @@ while True:
         compu_score += 1
 
     print("[게임 결과]")
-    print(f"나: {huma_text} vs 컴퓨터: {compu_text}")1\
+    print(f"나: {huma_text} vs 컴퓨터: {compu_text}")
     print(f"현재 스코어 나 {huma_score} : {compu_score} 컴퓨터")
 
     game_continue = input("다시 도전 (yes/no): ")
