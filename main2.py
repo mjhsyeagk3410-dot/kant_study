@@ -74,6 +74,9 @@ class BankAccount:
     def __str__ (self):
         return f"예금주: {self.owner}, 잔액: {self.balance:,}"
 
+    def __repr__ (self):
+        return f"예금주: {self.owner}, 잔액: {self.balance:,}"
+
     # 입금 처리 메서드 
     def deposit(self, amount):
         self.balance += amount # 입금처리
@@ -95,4 +98,8 @@ print(account_a)
 account_a.deposit(500_000)
 account_a.withdraw(1_000_000)
 print(f"잔액: {account_a.withdraw(200_000):,}")
+
 print(f"잔액: {account_a.withdraw(300_000):,}")
+
+account_c = BankAccount("홍길동", 200_000)
+print([account_a, account_c])
